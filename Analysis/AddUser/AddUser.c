@@ -12,7 +12,7 @@ unsigned char buf[] =
 
 
 
-;Using gdb to explore the instructions:
+;Adding the prevoius shellcode to function pointer to execute it, then using gdb to explore the instructions:
 
 /*
    0xbfffeede:	xor    ecx,ecx	
